@@ -47,11 +47,12 @@ jobs:
           aws-region: us-west-1
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
 
       # Update kubeconfig to access the EKS cluster
       - name: Configure kubectl to connect to EKS
         run: |
-          aws eks update-kubeconfig --name app-cluster
+          aws eks update-kubeconfig --name ${{ secrets.EKS_CLUSTER_NAME }} --region ${{ secrets.AWS_REGION }} 
 
       # Install Helm for Kubernetes management
       - name: Install Helm
