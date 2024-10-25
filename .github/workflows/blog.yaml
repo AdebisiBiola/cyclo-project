@@ -112,10 +112,10 @@ jobs:
           helm upgrade --install blogging-application blogging-application -f blogging-application/values.yaml --set image.tag=${{ env.VERSION_NUMBER}} --set replicaCount=3
 
            
-      # Create Ingress with SSL (Cert-Manager will handle certificate)
-      - name: Create Ingress with SSL
-        run: |
-          kubectl apply -f ingress-with-ssl.yaml
+      # # Create Ingress with SSL (Cert-Manager will handle certificate)
+      # - name: Create Ingress with SSL
+      #   run: |
+      #     kubectl apply -f ingress-with-ssl.yaml
 
       # Send deployment notification email
       - name: Notify Deployment Success
