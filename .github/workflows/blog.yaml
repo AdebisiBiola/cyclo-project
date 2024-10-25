@@ -59,7 +59,7 @@ jobs:
 
 
          # Install NGINX Ingress Controllers
-      - name: Install NGINX Ingress Controller
+      - name: Install NGINX Ingress Controllers
         run: |
           helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
           helm repo update
