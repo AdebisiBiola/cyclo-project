@@ -59,14 +59,30 @@ jobs:
 
 
          # Install NGINX Ingress Controllers
+      # - name: Install NGINX Ingress Controllers
+      #   run: |
+      #     helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+      #     helm repo update
+      #     helm upgrade --install nginx-ingress ingress-nginx/ingress-nginx \
+      #       --namespace ingress-nginx \
+      #       --create-namespace \
+      #       --set controller.publishService.enabled=true
+
       - name: Install NGINX Ingress Controllers
         run: |
           helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
           helm repo update
-          helm install nginx-ingress ingress-nginx/ingress-nginx \
-            --namespace ingress-nginx \
-            --create-namespace \
-            --set controller.publishService.enabled=true
+
+          # Check if the NGINX Ingress Controller is already installed
+          if helm ls -n ingress-nginx | grep -q nginx-ingress; then
+            echo "NGINX Ingress Controller is already installed."
+          else
+            helm upgrade --install nginx-ingress ingress-nginx/ingress-nginx \
+              --namespace ingress-nginx \
+              --create-namespace \
+              --set controller.publishService.enabled=true
+          fi
+
 
       # Deploy Cert-Manager (if not already installed)
       - name: Install Cert-Manager
