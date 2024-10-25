@@ -41,7 +41,7 @@ jobs:
           version: 'v1.19.3'
 
       # Configure AWS credentials for the EKS cluster
-      - name: Configure AWS Credentials
+      - name: Configure AWS Credential
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-region: ${{ secrets.AWS_REGION }}
