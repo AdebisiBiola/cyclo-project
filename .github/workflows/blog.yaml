@@ -12,7 +12,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Create version number for the Docker image
+      # Create version number for the Docker Image
       - name: Create version number
         run: |
           echo "VERSION_NUMBER=${RANDOM}" >> $GITHUB_ENV
