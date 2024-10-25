@@ -94,10 +94,10 @@ jobs:
 
       # Deploy the Helm chart for your application
       - name: Deploy App with Helm
-        run: |
-          helm upgrade --install blogging-application ./helm-chart \
-          --set image.tag=${{ env.VERSION_NUMBER }}
+        run: |     
+          helm upgrade --install blogging-application blogging-application -f blogging-application/values.yaml --set image.tag=${{ env.VERSION_NUMBER}} --set replicaCount=3
 
+           
       # Create Ingress with SSL (Cert-Manager will handle certificate)
       - name: Create Ingress with SSL
         run: |
