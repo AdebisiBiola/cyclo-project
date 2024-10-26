@@ -129,4 +129,4 @@ jobs:
           subject: "New Deployment - App version: ${{ env.VERSION_NUMBER }}"
           to: funkebiola17@gmail.com
           from: funkebiola17@gmail.com
-          body: "The application has been deployed with SSL at https://syjjem.online."
+          body: "The Application has been deployed with SSL at https://syjjem.online."
